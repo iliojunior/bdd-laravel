@@ -1,0 +1,11 @@
+# v2 syntax
+version: '2'
+
+services:
+  app:
+    image: ambientum/php:7.1-apache
+    container_name: behat
+    volumes:
+      - .:/var/www/app
+    ports:
+      - "1010:8080"

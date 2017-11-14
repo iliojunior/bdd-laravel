@@ -1,0 +1,11 @@
+# behat.yml
+
+default:
+  autoload:
+    - %paths.base%/tests/Behaviors/Contexts/
+  suites:
+    test:
+      paths:
+        - %paths.base%/tests/Behaviors/Features
+      contexts:
+        - Tests\Behaviors\Contexts\UsuarioContext

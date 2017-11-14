@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<definitions xmlns="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://localhost:8000/server" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap-enc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="App.UserModel" targetNamespace="http://localhost:8000/server">
+  <types>
+    <xsd:schema targetNamespace="http://localhost:8000/server">
+      <xsd:import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+    </xsd:schema>
+  </types>
+  <portType name="App.UserModelPort">
+    <operation name="getNome">
+      <input message="tns:getNomeIn"/>
+      <output message="tns:getNomeOut"/>
+    </operation>
+  </portType>
+  <binding name="App.UserModelBinding" type="tns:App.UserModelPort">
+    <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <operation name="getNome">
+      <soap:operation soapAction="http://localhost:8000/server#getNome"/>
+      <input>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8000/server"/>
+      </input>
+      <output>
+        <soap:body use="encoded" encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" namespace="http://localhost:8000/server"/>
+      </output>
+    </operation>
+  </binding>
+  <service name="App.UserModelService">
+    <port name="App.UserModelPort" binding="tns:App.UserModelBinding">
+      <soap:address location="http://localhost:8000/server"/>
+    </port>
+  </service>
+  <message name="getNomeIn">
+    <part name="nome" type="xsd:string"/>
+  </message>
+  <message name="getNomeOut">
+    <part name="return" type="xsd:string"/>
+  </message>
+</definitions>
